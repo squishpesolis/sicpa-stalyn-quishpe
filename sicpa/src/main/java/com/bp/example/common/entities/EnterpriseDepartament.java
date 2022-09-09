@@ -7,8 +7,10 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Size;
 
 import com.bp.example.base.entities.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @MappedSuperclass
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class  EnterpriseDepartament extends BaseEntity implements Serializable {
 
 

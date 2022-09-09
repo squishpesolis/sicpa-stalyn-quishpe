@@ -7,7 +7,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,33 +28,31 @@ public abstract class GenericRestController<T extends BaseEntity> {
 	private GenericServiceImpl<T> riskServiceImpl;
 	
 	
-	//METODOS GET
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/buscarPorId")
-	public T buscarPorId(@RequestParam(name = "id", required = true) Long id) {
+	@GetMapping("/{id}")
+	public T buscarPorId(@PathVariable Long id) {
 		return riskServiceImpl.buscarPorId(id);
 	}
 	
 
 
-	@RequestMapping(method = RequestMethod.GET, value = "/obtenerTodo")
+	@RequestMapping(method = RequestMethod.GET)
 	public List<T> obtenerTodo() {
 		return riskServiceImpl.obtenerTodo();
 	} 
 
 	
-	// METODOS POST
-
-	// TODO MANEJO DE EXEPCIONES REST 
-	@RequestMapping(method = RequestMethod.POST, value = "/guardar")
+	@RequestMapping(method = RequestMethod.POST)
 	public T guardar(@RequestBody @Valid T entity) throws CustomException {
 			return riskServiceImpl.guardar(entity);
 	}
 	
 
+	@RequestMapping(method = RequestMethod.PUT)
+	public T actualizar(@RequestBody @Valid T entity) throws CustomException {
+			return riskServiceImpl.guardar(entity);
+	}
 	
-	
-	//METODOS PUT
+
 	@RequestMapping(method = RequestMethod.PUT, value = "/obtenerListaPorPaginacion")
 	public List<T> obtenerListaPorPaginacion(@RequestBody(required = true )  String lazyParametros) throws JsonParseException, JsonMappingException, IOException {
 		return riskServiceImpl.obtenerListaPorPaginacion(lazyParametros);

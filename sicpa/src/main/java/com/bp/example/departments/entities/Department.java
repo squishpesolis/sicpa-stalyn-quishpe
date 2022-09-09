@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import com.bp.example.common.entities.EnterpriseDepartament;
 import com.bp.example.enterprise.entities.Enterprise;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "departments")
@@ -41,7 +42,7 @@ public class Department extends EnterpriseDepartament implements Serializable, C
 	private Enterprise enterprise;
 	
 	
-	@OneToMany(mappedBy = "department")
+	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     Set<DepartamentEmploye> departamentEmployes;
 	
 	public Department() {
@@ -85,6 +86,8 @@ public class Department extends EnterpriseDepartament implements Serializable, C
 	public void setIdDepartment(Long idDepartment) {
 		this.idDepartment = idDepartment;
 	}
+	
+	
 	
 	
 	
