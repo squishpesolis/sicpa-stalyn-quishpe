@@ -1,8 +1,11 @@
 package com.bp.example.employees.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +19,7 @@ import javax.validation.constraints.Size;
 
 import com.bp.example.base.entities.BaseEntity;
 import com.bp.example.departments.entities.DepartamentEmploye;
+import com.bp.example.departments.entities.Department;
 
 @Entity
 @Table(name = "employees")
@@ -47,7 +51,7 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 	private String email;
 	
 
-	@Column(name = "name", nullable = false, length = 50, unique = true)
+	@Column(name = "name", nullable = false, length = 50)
 	@Size(min = 1, max = 50)
 	private String name;
 
@@ -62,13 +66,33 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 
 	
 	
-	@OneToMany(mappedBy = "employe")
-    Set<DepartamentEmploye> departamentEmployes;
+	@OneToMany(mappedBy = "employe",cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<DepartamentEmploye> departmens = new HashSet<>();
+	
+
 
 	public Employe() {
 		super();
 	}
 
+	 public void addDepartment(Department depar) {
+		 DepartamentEmploye departamentEmploye = new DepartamentEmploye(depar,this);
+		 departmens.add(departamentEmploye);
+	 }
+	 
+	 public void removeDepartment(Department depar) {
+	        for (Iterator<DepartamentEmploye> iterator = departmens.iterator(); iterator.hasNext();) {
+	        	DepartamentEmploye departEmploye = iterator.next();
+	 
+	            if (departEmploye.getEmploye().equals(this) && departEmploye.getDepartment().equals(depar)) {
+	                iterator.remove();
+	                departEmploye.setDepartment(null);
+	                departEmploye.setEmploye(null);
+	            }
+	        }
+	    }
+	
+	 
 	@Override
 	public int compareTo(Employe o) {
 		// TODO Auto-generated method stub
@@ -131,13 +155,7 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 		this.surname = surname;
 	}
 
-	public Set<DepartamentEmploye> getDepartamentEmployes() {
-		return departamentEmployes;
-	}
 
-	public void setDepartamentEmployes(Set<DepartamentEmploye> departamentEmployes) {
-		this.departamentEmployes = departamentEmployes;
-	}
 
 	public Long getIdEmploye() {
 		return idEmploye;
@@ -145,6 +163,14 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 
 	public void setIdEmploye(Long idEmploye) {
 		this.idEmploye = idEmploye;
+	}
+
+	public Set<DepartamentEmploye> getDepartmens() {
+		return departmens;
+	}
+
+	public void setDepartmens(Set<DepartamentEmploye> departmens) {
+		this.departmens = departmens;
 	}
 	
 	

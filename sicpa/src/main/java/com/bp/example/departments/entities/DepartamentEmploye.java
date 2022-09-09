@@ -1,9 +1,12 @@
 package com.bp.example.departments.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,41 +26,58 @@ public class DepartamentEmploye extends BaseEntity implements Serializable , Com
 	 */
 	private static final long serialVersionUID = 1061070226167690706L;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private Long idDepartamentEmploye;
+	@EmbeddedId
+	private DepartamentEmployeKey idDepartamentEmploye;
 	
 
-	@ManyToOne
-    @MapsId("id")
-    @JoinColumn(name = "id_department")
+	@ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("idDepartment")
     Department department;
 	
-	@ManyToOne
-    @MapsId("id")
-    @JoinColumn(name = "id_employee")
+	@ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("idEmploye")
     Employe employe;
 
+	
+	public DepartamentEmploye(Department dep, Employe emp) {
+        this.department = dep;
+        this.employe = emp;
+        this.idDepartamentEmploye = new DepartamentEmployeKey(department.getIdDepartment(), employe.getIdEmploye());
+    }
+	  
 	@Override
 	public int compareTo(DepartamentEmploye o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return Objects.hash(department, employe);
+	}
 
+	
+	@Override
+	public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DepartamentEmploye other = (DepartamentEmploye) obj;
+        return Objects.equals(department, other.department) && Objects.equals(employe, other.employe);
+	}
+	
+	
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return this.idDepartamentEmploye;
+		return 11L;
 	}
 
-	public Long getIdDepartamentEmploye() {
-		return idDepartamentEmploye;
-	}
 
-	public void setIdDepartamentEmploye(Long idDepartamentEmploye) {
-		this.idDepartamentEmploye = idDepartamentEmploye;
-	}
 
 	public Department getDepartment() {
 		return department;
@@ -74,6 +94,8 @@ public class DepartamentEmploye extends BaseEntity implements Serializable , Com
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
+	
+	
 	
 	
 }

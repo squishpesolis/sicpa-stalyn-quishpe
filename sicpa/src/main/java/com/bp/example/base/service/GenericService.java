@@ -41,8 +41,6 @@ public abstract interface  GenericService <T> {
 	
 	public  abstract LazyParametros removerElementosDeBusquedaDeLazyParametros(LazyParametros parametros, List<SearchByCriteria> elementosAremover);
 
-	public abstract Integer eliminarPorListaIdsEntidad(List<Long> ids) throws CustomException;
-	
 	public abstract List<T> obtenerTodo();
 	
 	public abstract List<T> autocompletarEntidad(String key, String cadena);

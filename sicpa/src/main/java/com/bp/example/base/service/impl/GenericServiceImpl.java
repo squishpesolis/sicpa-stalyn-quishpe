@@ -186,12 +186,7 @@ public abstract class GenericServiceImpl<T extends BaseEntity> implements Generi
 	}
 
 
-	@Override
-	public Integer eliminarPorListaIdsEntidad(List<Long> ids) throws CustomException {
-		Integer a = riskRepositoryBase.eliminarEntidadPorListaIds(ids);
-		return a;
-	}
-	
+
 	@Override
 	public List<T> obtenerEntidadesPorListaIdsEntidad(List<Long> ids) throws CustomException {
 		List<T> a = riskRepositoryBase.obtenerEntidadesPorListaIds(ids);

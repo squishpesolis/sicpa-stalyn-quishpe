@@ -63,12 +63,6 @@ public abstract class GenericRestController<T extends BaseEntity> {
 		return riskServiceImpl.contar(lazyParametros);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/eliminarPorListaIds")
-	public Integer eliminarPorListaIds(@RequestBody(required = true ) Long[] ids) throws CustomException {
-		return riskServiceImpl.eliminarPorListaIdsEntidad(Arrays.asList(ids));
-		
-	}
-	
 	@RequestMapping(method = RequestMethod.GET, value = "/autocompletarEntidad")
 	public List<T> autocompletarEntidad(@RequestParam(name = "key", required = true) String key,@RequestParam(name = "idSubEmpresa", required = false) Long idSubEmpresa, @RequestParam(name = "cadena", required = true) String cadena) throws JsonMappingException, JsonProcessingException{
 		return riskServiceImpl.autocompletarEntidad(key,cadena);

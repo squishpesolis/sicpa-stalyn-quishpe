@@ -1,6 +1,7 @@
 package com.bp.example.departments.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -16,16 +17,27 @@ public class DepartamentEmployeKey  implements Serializable{
 
 
 	@Column(name = "id_department")
-	Long idDepartment;
+	private Long idDepartment;
 	
 	
 	@Column(name = "id_employee")
-	Long idEmploye;
+	private Long idEmploye;
 
 
 	public DepartamentEmployeKey() {
 		super();
 	}
+	
+	
+
+
+	public DepartamentEmployeKey(Long idDepartment, Long idEmploye) {
+		super();
+		this.idDepartment = idDepartment;
+		this.idEmploye = idEmploye;
+	}
+
+
 
 
 	public Long getIdDepartment() {
@@ -48,6 +60,22 @@ public class DepartamentEmployeKey  implements Serializable{
 	}
 	
 	
+	@Override
+	public boolean equals(Object o) {
+		   if (this == o) return true;
+		   
+	        if (o == null || getClass() != o.getClass())
+	            return false;
+	 
+	        DepartamentEmployeKey that = (DepartamentEmployeKey) o;
+	        return Objects.equals(idDepartment, that.idDepartment) &&
+	               Objects.equals(idEmploye, that.idEmploye);
+	}
 	
+	
+	  @Override
+    public int hashCode() {
+        return Objects.hash(idEmploye, idEmploye);
+    }
 	
 }
