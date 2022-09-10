@@ -1,0 +1,205 @@
+{
+  "idiomas": {
+    "es": "Web en Español",
+    "us": "Web en Inglés"
+  },
+  "botones": {
+    "descargar": "Descargar"
+  },
+  "menu": {
+    "inicio": "Inicio",
+    "quienes_somos": {
+      "titulo": "Quienes somos",
+      "naturae": "NaturaE",
+      "biodiversidad": "Biodiversidad",
+      "ministerio_ambiente": "Ministerio del Ambiente"
+    },
+    "informacion": "Información",
+    "estaditicas": "Estadísticas",
+    "contactos": "Contactos"
+    
+  },
+  "carrusel" : {
+    "texto": "Bienvenidos al Naturae, una plataforma integradora de las bases de datos, repositorios y referencias informáticas sobre la biodiversidad del Ecuador"
+  },
+  "links" : {
+    "titulo": "Navega y conoce.",
+    "subtitulo": "¿Por qué somos un país megadiverso?",
+    "monitoreo": {
+      "nombre": "MONITOREO",
+      "monitoreo1": "MONITOREO1",
+      "monitoreo2": "MONITOREO2",
+      "monitoreo3": "MONITOREO3",
+      "monitoreo4": "MONITOREO4"
+
+    },
+    "datos": {
+      "nombre": "DATOS",
+      "datos1": "DATOS1",
+      "datos2": "DATOS2",
+      "datos3": "DATOS3"
+
+    },
+    "participacion": {
+      "nombre": "PARTICIPACIÓN",
+      "participacion1": "PARTICIPACIÓN1",
+      "participacion2": "PARTICIPACIÓN2",
+      "participacion3": "PARTICIPACIÓN3"
+
+    },
+    "publicaciones": {
+      "nombre": "PUBLICACIONES",
+      "publicaciones1": "PUBLICACIONES1",
+      "publicaciones2": "PUBLICACIONES2",
+      "publicaciones3": "PUBLICACIONES3"
+
+    },
+    "networking": {
+      "nombre": "NETWORKING",
+      "networking1": "NETWORKING1",
+      "networking2": "NETWORKING2",
+      "networking3": "NETWORKING3"
+
+    }
+  },
+  "tooltips" : {
+    "monitoreo": {
+      "nombre": "TP MONITOREO",
+      "monitoreo1": "TP MONITOREO1",
+      "monitoreo2": "TP MONITOREO2",
+      "monitoreo3": "TP MONITOREO3",
+      "monitoreo4": "TP MONITOREO4"
+
+    },
+    "datos": {
+      "nombre": "TP DATOS",
+      "datos1": "TP DATOS1",
+      "datos2": "TP DATOS2",
+      "datos3": "TP DATOS3"
+
+    },
+    "participacion": {
+      "nombre": "TP PARTICIPACIÓN",
+      "participacion1": "TP PARTICIPACIÓN1",
+      "participacion2": "TP PARTICIPACIÓN2",
+      "participacion3": "TP PARTICIPACIÓN3"
+
+    },
+    "publicaciones": {
+      "nombre": "TP PUBLICACIONES",
+      "publicaciones1": "TP PUBLICACIONES1",
+      "publicaciones2": "TP PUBLICACIONES2",
+      "publicaciones3": "TP PUBLICACIONES3"
+
+    },
+    "networking": {
+      "nombre": "TP NETWORKING",
+      "networking1": "TP NETWORKING1",
+      "networking2": "TP NETWORKING2",
+      "networking3": "TP NETWORKING3"
+
+    },
+    "graficos": {
+      "grafico_estadistica_leyendas": "Al seleccionar la categoria, estara eliminado la categoria del gráfico"
+    },
+    "paleta_colores":{
+      "descripcion": "En esta sección puede elegir una paleta de colores para los gráficos"
+    }
+
+  },
+  "indicadores" : {
+    "titulo": "Indicadores",
+    "registros_de_ocurrencias": "REGISTROS DE OCURRENCIAS",
+    "ocurrencias_georeferenciadas": "OCURRENCIAS GEOREFERENCIADAS",
+    "ocurrencias_con_imagenes": "OCURRENCIAS CON IMÁGENES",
+    "ocurrencias_identificadas_hasta_especie": "OCURRENCIAS IDENTIFICADAS HASTAS ESPECIES",
+    "generos": "GÉNEROS",
+    "especies": "ESPECIES",
+    "familias": "FAMILIAS",
+    "total_taxa": "TOTAL TAXA",
+    "colecciones": "COLECCIONES"
+  },
+  "principales" : {
+    "titulo": "Cifras principales de la Base de Datos Nacional de Biodiversidad",
+    "subtitulo": "",
+    "especies": "ESPECIES",
+    "colecciones": "COLECCIONES",
+    "registros_de_ocurrencias": "REGISTROS DE OCURRENCIAS"
+  },
+  "que_es_naturae": {
+    "titulo": "Navega y conoce",
+    "subtitulo": "Conoce por qué somos un país megadiverso",
+    "texto_principal": "\"Carlos Linneo en 1732 presenta la primera clasificación de la biodiversidad, llamada Systema Naturae\"",
+    "p1":"NATURAE, Base nacional de datos de biodiversidad, recopila información detallada sobre las especies de fauna y flora del Ecuador",
+    "p2": "INABIO presenta el portal NATURAE, cuyo nombre es una remembranza basada en <i>\"Systema naturae, sive regna tria naturae systematice proposita per classes, ordines , genera & species</i>\" (Sistema natural, o los tres reinos de la naturaleza, según clases, géneros y especies), que fue publicada por Carlos Linneo en 1735 y fue el sistema de clasificación de la naturaleza",
+    "p3": "<b>NATURAE</b> presenta a la comunidad la riqueza del Ecuador y su megadiversidad a través del portal de la base nacional de datos. Esta información, disponible para todas las personas de manera gratuita, es una potente herramienta que brinda la oportunidad a la comunidad, de conocer la biodiversidad del Ecuador."
+  },
+  "datos_biodiversidad": {
+    "titulo": "Datos de Biodiversidad"
+  },
+  "footer": {
+    "informacion": "INFORMACIÓN",
+    "contactos": {
+      "titulo": "CONTACTOS",
+      "correo": "info@biodiversidad.gob.ec",
+      "telefono": "(+ 593) 2 2449 824",
+      "direccion": "Pje. Rumipamba N. 341 y Av. de los Shyris (Parque La Carolina) Quito - Ecuador"
+    }
+  },
+  "estadisticas": {
+    "enlace_web": "www.enlace-web.com, {{fecha_consulta}}",
+    "titulo": "ESTADÍSTICAS",
+    "subtitulo": "",
+    "boton_ver_estadisticas": "VER ESTADÍSTICAS",
+    "titulo_paleta_colores": "Colores Estadisticas",
+    "grafico_registros_de_ocurrencias": {
+      "titulo_grafico": "REGISTRO DE OCURRENCIAS",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Ocurrencias",
+      "sub_titulo_dona": ""
+    },
+    "grafico_georeferenciado": {
+      "titulo_grafico": "Ocurrencias georreferenciadas",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Georreferenciado",
+      "sub_titulo_dona": ""
+    },
+    "grafico_ocurrencias_con_imagenes": {
+      "titulo_grafico": "Ocurrencias con imágenes",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Imágenes",
+      "sub_titulo_dona": ""
+    },
+    "grafico_identificado_por_especie": {
+      "titulo_grafico": "Ocurrencias identificadas hasta especie",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Especies",
+      "sub_titulo_dona": ""
+    },
+    "grafico_familia": {
+      "titulo_grafico": "Ocurrencias identificadas hasta familia",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Familias",
+      "sub_titulo_dona": ""
+    },
+    "grafico_genero": {
+      "titulo_grafico": "Ocurrencias identificadas hasta género",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Géneros",
+      "sub_titulo_dona": ""
+    },
+    "grafico_especies": {
+      "titulo_grafico": "Especies",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Especies",
+      "sub_titulo_dona": ""
+    },
+    "grafico_total_taxa": {
+      "titulo_grafico": "Taxa total",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Total Taxa",
+      "sub_titulo_dona": ""
+    }
+  }
+
+}

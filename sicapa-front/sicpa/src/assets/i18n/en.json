@@ -1,0 +1,213 @@
+{
+  "idiomas": {
+    "es": "Website in Spanish",
+    "us": "Website in english"
+  },
+  "botones": {
+    "descargar": "I Descargar"
+  },
+  "menu": {
+    "titulo": "Quienes somos",
+    "inicio": "I Inicio",
+    "quienes_somos": {
+      "titulo": "Quienes somos",
+      "naturae": "I NaturaE",
+      "biodiversidad": "I Biodiversidad",
+      "ministerio_ambiente": "I Ministerio del Ambiente"
+    },
+    "informacion": "I Información",
+    "estaditicas": "I Estadísticas",
+    "contactos": "I Contactos"
+    
+  },
+  "carrusel" : {
+    "texto": "Welcome to the National Databank of Biodiversity, a software application integrating databases, repositories and computer references on the biodiversity of Ecuador"
+  },
+  "links" : {
+    "titulo": "Navega y conoce.",
+    "subtitulo": "¿Por qué somos un país megadiverso?",
+    "monitoreo": {
+      "nombre": "I MONITOREO",
+      "monitoreo1": "I MONITOREO1",
+      "monitoreo2": "I MONITOREO2",
+      "monitoreo3": "I MONITOREO3",
+      "monitoreo4": "I MONITOREO4"
+
+    },
+    "datos": {
+      "nombre": "I DATOS",
+      "datos1": "I DATOS1",
+      "datos2": "I DATOS2",
+      "datos3": "I DATOS3"
+
+    },
+    "participacion": {
+      "nombre": "I PARTICIPACIÓN",
+      "participacion1": "I PARTICIPACIÓN1",
+      "participacion2": "I PARTICIPACIÓN2",
+      "participacion3": "I PARTICIPACIÓN3"
+
+    },
+    "publicaciones": {
+      "nombre": "I PUBLICACIONES",
+      "publicaciones1": "I PUBLICACIONES1",
+      "publicaciones2": "I PUBLICACIONES2",
+      "publicaciones3": "I PUBLICACIONES3"
+
+    },
+    "networking": {
+      "nombre": "I NETWORKING",
+      "networking1": "I NETWORKING1",
+      "networking2": "I NETWORKING2",
+      "networking3": "I NETWORKING3"
+
+    }
+  },
+  "tooltips" : {
+    "monitoreo": {
+      "nombre": "I TP MONITOREO",
+      "monitoreo1": "I TP MONITOREO1",
+      "monitoreo2": "I TP MONITOREO2",
+      "monitoreo3": "I TP MONITOREO3",
+      "monitoreo4": "I TP MONITOREO4"
+
+    },
+    "datos": {
+      "nombre": "I TP DATOS",
+      "datos1": "I TP DATOS1",
+      "datos2": "I TP DATOS2",
+      "datos3": "I TP DATOS3"
+
+    },
+    "participacion": {
+      "nombre": "I TP PARTICIPACIÓN",
+      "participacion1": "I TP PARTICIPACIÓN1",
+      "participacion2": "I TP PARTICIPACIÓN2",
+      "participacion3": "I TP PARTICIPACIÓN3"
+
+    },
+    "publicaciones": {
+      "nombre": "I TP PUBLICACIONES",
+      "publicaciones1": "I TP PUBLICACIONES1",
+      "publicaciones2": "I TP PUBLICACIONES2",
+      "publicaciones3": "I TP PUBLICACIONES3"
+
+    },
+    "networking": {
+      "nombre": "I TP NETWORKING",
+      "networking1": "I TP NETWORKING1",
+      "networking2": "I TP NETWORKING2",
+      "networking3": "I TP NETWORKING3"
+
+    },
+    "graficos": {
+      "grafico_estadistica_leyendas": "I Al seleccionar la categoria, estara eliminado la categoria del gráfico"
+    },
+    "paleta_colores":{
+      "descripcion": "I En esta sección puede elegir una paleta de colores para los gráficos"
+    }
+  },
+  "indicadores" : {
+    "titulo": "Basic statistics for the National Database of Biodiversity",
+    "registros_de_ocurrencias": "RECORD OF OCCURRENCES",
+    "ocurrencias_georeferenciadas": "GEOREFERENCED OCCURRENCES",
+    "ocurrencias_con_imagenes": "OCCURRENCES WITH IMAGES",
+    "ocurrencias_identificadas_hasta_especie": "OCCURRENCES IDENTIFIED TO SPECIES",
+    "generos": "GENERA",
+    "especies": "SPECIES",
+    "familias": "FAMILIES",
+    "total_taxa": "TOTAL TAXA",
+    "colecciones": "COLECCIONES"
+  },
+  "principales" : {
+    "titulo": "I Cifras principales de la Base de Datos Nacional de Biodiversidad",
+    "subtitulo": "",
+    "especies": "I ESPECIES",
+    "colecciones": "I COLECCIONES",
+    "registros_de_ocurrencias": "RECORD OF OCCURRENCES"
+
+  },
+  "que_es_naturae": {
+    "titulo": "I Navega y conoce",
+    "subtitulo": "I Conoce porque somos un país megadiverso",
+    "texto_principal": "\"I Carl Lineo en 1732 presenta la primera clasificación de la biodiversidad llamada Systema Naturae\"",
+    "p1":"I NATURAE, Base nacional de datos de biodiversidad recopila información detallada sobre las especies de fauna y flora del Ecuador.",
+    "p2": "I Inabio presenta la marca NATURAE cuyo nombre es una remembranza bassada en \"Systema naturae, sive regna tria naturae systematice proposita per classes, ordines , generam & species\"(Sistema natural, o los tres reinos de la naturaleza, según clases, gñeneros y especies). Que fue publicada por Carlos Linneo en 1735 y fue el sistema de clasificación de la naturaleza",
+    "p3": "I NATURAE presenta a la comunidad la requiza del Ecuador y su megadiversidad a través del portal de la base nacional de datos. Esta información disponible para todas las personas de manera gratuita es una potente herramienta que brinda la oportunidad a la comunidad de conocer la biodiversidad del Ecuador"
+   
+  },
+  "datos_biodiversidad": {
+    "titulo": "Biodiversity Data"
+  },
+  "footer": {
+    "informacion": "INFORMATION",
+    "contactos": {
+      "titulo": "Contact information",
+      "correo": "info@biodiversidad.gob.ec",
+      "telefono": "(+ 593) 2 2449 824",
+      "direccion": "Pje. Rumipamba N. 341 y Av. de los Shyris (Parque La Carolina) Quito - Ecuador"
+    }
+  },
+  "estadisticas": {
+    "enlace_web": "www.enlace-web.com, {{fecha_consulta}}",
+    "titulo": "GENERAL STATISTICS",
+    "subtitulo": "I Los datos más importantes de la biodiversidad del Ecuador",
+    "boton_ver_estadisticas": "ACCESS GENERAL STATISTICS",
+    "titulo_paleta_colores": "I Colores Estadisticas",
+    "grafico_registros_de_ocurrencias": {
+      "titulo_grafico": "Occurrences by collection",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Occurrences",
+      "sub_titulo_dona": ""
+    },
+    "grafico_georeferenciado": {
+      "titulo_grafico": "Georreferenced occurences by collection",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Georreferenced",
+      "sub_titulo_dona": ""
+    },
+    "grafico_ocurrencias_con_imagenes": {
+      "titulo_grafico": "Occurrences with images",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Images",
+      "sub_titulo_dona": ""
+    },
+    "grafico_identificado_por_especie": {
+      "titulo_grafico": "Occurrences identified to species",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Species",
+      "sub_titulo_dona": ""
+    },
+    "grafico_familia": {
+      "titulo_grafico": "Occurrences identified to families",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Families",
+      "sub_titulo_dona": ""
+    },
+    "grafico_genero": {
+      "titulo_grafico": "Occurrences identified to genus",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Genera",
+      "sub_titulo_dona": ""
+    },
+    "grafico_especies": {
+      "titulo_grafico": "Species",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Species",
+      "sub_titulo_dona": ""
+    },
+    "grafico_total_taxa": {
+      "titulo_grafico": "Total taxa",
+      "sub_titulo_grafico": "INABIO. {{anio}}. Instituto Nacional de Biodiversidad, Gobierno de la República del Ecuador, Quito, Ecuador.",
+      "titulo_dona": "Total taxa",
+      "sub_titulo_dona": ""
+    }
+  },
+  "contactos": {
+    "correo": "info@biodiversidad.gob.ec",
+    "telefono": "(+ 593) 2 2449 824",
+    "direccion": "Pje. Rumipamba N. 341 y Av. de los Shyris (Parque La Carolina) Quito - Ecuador"
+  }
+
+
+}
