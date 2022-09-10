@@ -19,6 +19,11 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.NaturalIdCache;
 
 import com.bp.example.base.entities.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 @Entity(name = "Employee")
@@ -32,30 +37,32 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
 
 	@Id
     @GeneratedValue
-    private Long idPost;
+    private Long idEmployee;
  
     private String title;
  
+
     @OneToMany(
-        mappedBy = "post",
+        mappedBy = "employee",
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<EmployeeDepartment> tags = new ArrayList<>();
+    @JsonManagedReference
+    private List<EmployeeDepartment> departments = new ArrayList<>();
  
     public Employee() {
     }
  
     
     
-    public Long getIdPost() {
-		return idPost;
+    public Long getIdEmployee() {
+		return idEmployee;
 	}
 
 
 
-	public void setIdPost(Long id) {
-		this.idPost = id;
+	public void setIdEmployee(Long id) {
+		this.idEmployee = id;
 	}
 
 
@@ -72,14 +79,14 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
 
 
 
-	public List<EmployeeDepartment> getTags() {
-		return tags;
+	public List<EmployeeDepartment> getDepartments() {
+		return departments;
 	}
 
 
 
-	public void setTags(List<EmployeeDepartment> tags) {
-		this.tags = tags;
+	public void setDepartments(List<EmployeeDepartment> tags) {
+		this.departments = tags;
 	}
 
 
@@ -90,23 +97,23 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
  
     //Getters and setters omitted for brevity
  
-    public void addTag(Department tag) {
-        EmployeeDepartment postTag = new EmployeeDepartment(this, tag);
-        tags.add(postTag);
-        tag.getPosts().add(postTag);
+    public void addTag(Department department) {
+        EmployeeDepartment employeeDepartment = new EmployeeDepartment(this, department);
+        departments.add(employeeDepartment);
+        department.getEmployees().add(employeeDepartment);
     }
  
-    public void removeTag(Department tag) {
-        for (Iterator<EmployeeDepartment> iterator = tags.iterator();
+    public void removeTag(Department department) {
+        for (Iterator<EmployeeDepartment> iterator = departments.iterator();
              iterator.hasNext(); ) {
-            EmployeeDepartment postTag = iterator.next();
+            EmployeeDepartment employeeDepartment = iterator.next();
  
-            if (postTag.getPost().equals(this) &&
-                    postTag.getTag().equals(tag)) {
+            if (employeeDepartment.getEmployee().equals(this) &&
+                    employeeDepartment.getDepartment().equals(department)) {
                 iterator.remove();
-                postTag.getTag().getPosts().remove(postTag);
-                postTag.setPost(null);
-                postTag.setTag(null);
+                employeeDepartment.getDepartment().getEmployees().remove(employeeDepartment);
+                employeeDepartment.setEmployee(null);
+                employeeDepartment.setDepartment(null);
             }
         }
     }
@@ -140,6 +147,6 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return this.idPost;
+		return this.idEmployee;
 	}
 }

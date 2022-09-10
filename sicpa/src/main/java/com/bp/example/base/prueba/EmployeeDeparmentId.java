@@ -10,19 +10,24 @@ import javax.persistence.Embeddable;
 public class EmployeeDeparmentId
     implements Serializable {
  
-    @Column(name = "post_id")
-    private Long postId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1768211251620874780L;
+
+	@Column(name = "id_employee")
+    private Long idEmployee;
  
-    @Column(name = "tag_id")
-    private Long tagId;
+    @Column(name = "id_department")
+    private Long idDepartment;
  
     private EmployeeDeparmentId() {}
  
     public EmployeeDeparmentId(
-        Long postId,
-        Long tagId) {
-        this.postId = postId;
-        this.tagId = tagId;
+        Long idEmployee,
+        Long idDepartment) {
+        this.idEmployee = idEmployee;
+        this.idDepartment = idDepartment;
     }
  
     //Getters omitted for brevity
@@ -35,12 +40,12 @@ public class EmployeeDeparmentId
             return false;
  
         EmployeeDeparmentId that = (EmployeeDeparmentId) o;
-        return Objects.equals(postId, that.postId) &&
-               Objects.equals(tagId, that.tagId);
+        return Objects.equals(idEmployee, that.idEmployee) &&
+               Objects.equals(idDepartment, that.idDepartment);
     }
  
     @Override
     public int hashCode() {
-        return Objects.hash(postId, tagId);
+        return Objects.hash(idEmployee, idDepartment);
     }
 }

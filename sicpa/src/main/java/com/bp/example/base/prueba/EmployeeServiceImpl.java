@@ -11,30 +11,32 @@ import org.springframework.stereotype.Service;
 import com.bp.example.base.exceptions.CustomException;
 import com.bp.example.base.service.impl.GenericServiceImpl;
 
-@Service("postServiceImpl")
+@Service("employeeServiceImpl")
 @Transactional
 public class EmployeeServiceImpl extends GenericServiceImpl<Employee> implements EmployeeService{
 
 
 	@Autowired
-	private DepartmentService tagService;
+	private DepartmentService departmentService;
 	
 	@Override
 	public Employee guardar(Employee entidad) throws CustomException {
 		
-		Employee post = new Employee();
-		post.setTitle(entidad.getTitle());
+		Employee emplo = new Employee();
+		emplo.setTitle(entidad.getTitle());
 		
-		List<EmployeeDepartment> listaTags = entidad.getTags();
+		List<EmployeeDepartment> listDeparments = entidad.getDepartments();
 		
-		for (EmployeeDepartment postTag : listaTags) {
+		for (EmployeeDepartment employeeDepartment : listDeparments) {
 			
-			Department tageSave = tagService.buscarPorId(postTag.getTag().getIdTag());
+			Department departmenDb = departmentService.buscarPorId(employeeDepartment.getDepartment().getIdDepartment());
 			
-			post.addTag(tageSave);
+			emplo.addTag(departmenDb);
 		}
 		
-		return super.guardar(post);
+		return super.guardar(emplo);
 	}
+	
+
 	
 }

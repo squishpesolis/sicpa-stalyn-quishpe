@@ -10,7 +10,7 @@ import com.bp.example.base.entities.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @MappedSuperclass
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class  EnterpriseDepartament extends BaseEntity implements Serializable {
 
 
