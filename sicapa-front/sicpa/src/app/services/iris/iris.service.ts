@@ -17,12 +17,12 @@ import { URL_SERVICES,
   ZONA_HORARIO_TIEMPO,
   IDIOMA_PRINCIPAL_SISTEMA} from '../../config/config';
 
+import { MayHaveId } from 'src/app/interfaces/generic-id.interface';
 
 
-@Injectable({
-  providedIn: 'root'
-})
-export class IrisService<T> {
+
+
+export class IrisService<T extends MayHaveId> {
   protected url: string;
   protected http: HttpClient;
 
@@ -36,9 +36,18 @@ export class IrisService<T> {
   }
 
   guardar(modelo: T): Observable<object> {
-    let urlCompleta = this.url.concat('/guardar');
-    return this.http.post(urlCompleta, modelo) as Observable<object>;
+    if(modelo.id === null) {
+      return this.http.post(this.url, modelo) as Observable<object>;
+    }
+    return this.editar(modelo)
+    
   }
+
+  editar(modelo: T): Observable<object> {
+    return this.http.put(this.url, modelo) as Observable<object>;
+  }
+
+  
 
   obtenerListaPorPaginacion(lazyParametros: LazyParametros) {
     let urlCompleta = this.url.concat('/obtenerListaPorPaginacion');
@@ -51,8 +60,7 @@ export class IrisService<T> {
   }
 
   buscarPorId(id: string): Observable<object> {
-    let urlCompleta = this.url.concat('/buscarPorId');
-    urlCompleta += '?id=' + id;
+    let urlCompleta = this.url.concat('/').concat(id);
     return this.http.get(urlCompleta) as Observable<object>;
   }
 
@@ -84,15 +92,21 @@ export class IrisService<T> {
   }
 
   formarLazyParametros(event: LazyLoadEvent): LazyParametros {
-    let lazyParametros: LazyParametros = null;
-    const filtrosObject = event.filters;
-    const size: number = event.rows;
-    const pagina: number = event.first;
+    let lazyParametros: LazyParametros = {
+       listaBuscarCriterio: [],
+       pagina: 1,
+       size: 10,
+       order: 1,
+       campoOrdenar: ''
+    };
+    const filtrosObject = event.filters!;
+    const size: number = event.rows!;
+    const pagina: number = event.first!;
     const paginaAux = pagina / size;
     const order = event.sortOrder;
     const sortField = event.sortField;
     let campoOrdenar: string = '';
-    campoOrdenar = sortField === undefined ? 'fechaCreacion' : sortField;
+    campoOrdenar = sortField === undefined ? 'createDate' : sortField;
     if (Object.keys(filtrosObject).length === 0) {
       // No hay filtros;
       return lazyParametros = this.formarLazyLoadParametros(
@@ -105,11 +119,11 @@ export class IrisService<T> {
     } else {
       const listaBuscarCriterio: BuscarPorCriterio[] = [];
       Object.keys(filtrosObject).map((key) => {
-        let filterMetadata: FilterMetadata = null;
-        let buscarCriterio: BuscarPorCriterio = null;
+        let filterMetadata: FilterMetadata = {};
+        let buscarCriterio: BuscarPorCriterio = {};
         let operacion: string = '';
         filterMetadata = filtrosObject[key];
-        operacion = filterMetadata.matchMode;
+        operacion = filterMetadata.matchMode!;
 
         let filterMetadataValue = this.toLowerConverter(filterMetadata.value);
 
@@ -152,7 +166,7 @@ export class IrisService<T> {
   formarLazyLoadParametros(
     pagina: number,
     size: number,
-    listaBuscarCriterio: BuscarPorCriterio[],
+    listaBuscarCriterio: BuscarPorCriterio[] | null,
     order: number = 0,
     campoOrdenar: string = 'fechaCreacion'): LazyParametros {
 
