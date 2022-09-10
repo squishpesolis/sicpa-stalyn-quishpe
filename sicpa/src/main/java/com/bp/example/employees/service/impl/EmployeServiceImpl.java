@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.bp.example.base.exceptions.CustomException;
 import com.bp.example.base.service.impl.GenericServiceImpl;
-import com.bp.example.departments.entities.DepartamentEmploye;
-import com.bp.example.departments.entities.Department;
+import com.bp.example.departments.entities.DepartamentEmployeOld;
+import com.bp.example.departments.entities.DepartmentOld;
 import com.bp.example.departments.service.DepartamentEmployeService;
 import com.bp.example.departments.service.DepartmentService;
 import com.bp.example.employees.entities.Employe;
@@ -40,8 +40,8 @@ public class EmployeServiceImpl extends GenericServiceImpl<Employe> implements E
 		employeSave.setStatus(entidad.isStatus());
 		employeSave.setEmail(entidad.getEmail());
 		
-		for (DepartamentEmploye departamentEmploye : entidad.getDepartmens()) {
-			Department department  = departmentService.buscarPorId(departamentEmploye.getDepartment().getId());
+		for (DepartamentEmployeOld departamentEmploye : entidad.getDepartmens()) {
+			DepartmentOld department  = departmentService.buscarPorId(departamentEmploye.getDepartment().getId());
 			employeSave.addDepartment(department);
 			
 		}

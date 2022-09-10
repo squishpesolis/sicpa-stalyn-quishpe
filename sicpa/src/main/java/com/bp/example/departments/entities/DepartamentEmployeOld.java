@@ -19,7 +19,7 @@ import com.bp.example.employees.entities.Employe;
 
 @Entity
 @Table(name = "departments_employees")
-public class DepartamentEmploye extends BaseEntity implements Serializable , Comparable<DepartamentEmploye> {
+public class DepartamentEmployeOld extends BaseEntity implements Serializable , Comparable<DepartamentEmployeOld> {
 	
 	/**
 	 * 
@@ -27,26 +27,26 @@ public class DepartamentEmploye extends BaseEntity implements Serializable , Com
 	private static final long serialVersionUID = 1061070226167690706L;
 
 	@EmbeddedId
-	private DepartamentEmployeKey idDepartamentEmploye;
+	private DepartamentEmployeKeyOld idDepartamentEmploye;
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("idDepartment")
-    Department department;
+    DepartmentOld department;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("idEmploye")
     Employe employe;
 
 	
-	public DepartamentEmploye(Department dep, Employe emp) {
+	public DepartamentEmployeOld(DepartmentOld dep, Employe emp) {
         this.department = dep;
         this.employe = emp;
-        this.idDepartamentEmploye = new DepartamentEmployeKey(department.getIdDepartment(), employe.getIdEmploye());
+        this.idDepartamentEmploye = new DepartamentEmployeKeyOld(department.getIdDepartment(), employe.getIdEmploye());
     }
 	  
 	@Override
-	public int compareTo(DepartamentEmploye o) {
+	public int compareTo(DepartamentEmployeOld o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -66,7 +66,7 @@ public class DepartamentEmploye extends BaseEntity implements Serializable , Com
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DepartamentEmploye other = (DepartamentEmploye) obj;
+        DepartamentEmployeOld other = (DepartamentEmployeOld) obj;
         return Objects.equals(department, other.department) && Objects.equals(employe, other.employe);
 	}
 	
@@ -79,11 +79,11 @@ public class DepartamentEmploye extends BaseEntity implements Serializable , Com
 
 
 
-	public Department getDepartment() {
+	public DepartmentOld getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Department department) {
+	public void setDepartment(DepartmentOld department) {
 		this.department = department;
 	}
 

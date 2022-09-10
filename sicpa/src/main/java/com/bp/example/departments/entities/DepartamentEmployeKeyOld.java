@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 
 
 @Embeddable
-public class DepartamentEmployeKey  implements Serializable{
+public class DepartamentEmployeKeyOld  implements Serializable{
 
 	/**
 	 * 
@@ -24,14 +24,14 @@ public class DepartamentEmployeKey  implements Serializable{
 	private Long idEmploye;
 
 
-	public DepartamentEmployeKey() {
+	public DepartamentEmployeKeyOld() {
 		super();
 	}
 	
 	
 
 
-	public DepartamentEmployeKey(Long idDepartment, Long idEmploye) {
+	public DepartamentEmployeKeyOld(Long idDepartment, Long idEmploye) {
 		super();
 		this.idDepartment = idDepartment;
 		this.idEmploye = idEmploye;
@@ -67,7 +67,7 @@ public class DepartamentEmployeKey  implements Serializable{
 	        if (o == null || getClass() != o.getClass())
 	            return false;
 	 
-	        DepartamentEmployeKey that = (DepartamentEmployeKey) o;
+	        DepartamentEmployeKeyOld that = (DepartamentEmployeKeyOld) o;
 	        return Objects.equals(idDepartment, that.idDepartment) &&
 	               Objects.equals(idEmploye, that.idEmploye);
 	}

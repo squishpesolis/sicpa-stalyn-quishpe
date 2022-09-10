@@ -18,8 +18,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 import com.bp.example.base.entities.BaseEntity;
-import com.bp.example.departments.entities.DepartamentEmploye;
-import com.bp.example.departments.entities.Department;
+import com.bp.example.departments.entities.DepartamentEmployeOld;
+import com.bp.example.departments.entities.DepartmentOld;
 
 @Entity
 @Table(name = "employees")
@@ -67,7 +67,7 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 	
 	
 	@OneToMany(mappedBy = "employe",cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<DepartamentEmploye> departmens = new HashSet<>();
+    Set<DepartamentEmployeOld> departmens = new HashSet<>();
 	
 
 
@@ -75,14 +75,14 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 		super();
 	}
 
-	 public void addDepartment(Department depar) {
-		 DepartamentEmploye departamentEmploye = new DepartamentEmploye(depar,this);
+	 public void addDepartment(DepartmentOld depar) {
+		 DepartamentEmployeOld departamentEmploye = new DepartamentEmployeOld(depar,this);
 		 departmens.add(departamentEmploye);
 	 }
 	 
-	 public void removeDepartment(Department depar) {
-	        for (Iterator<DepartamentEmploye> iterator = departmens.iterator(); iterator.hasNext();) {
-	        	DepartamentEmploye departEmploye = iterator.next();
+	 public void removeDepartment(DepartmentOld depar) {
+	        for (Iterator<DepartamentEmployeOld> iterator = departmens.iterator(); iterator.hasNext();) {
+	        	DepartamentEmployeOld departEmploye = iterator.next();
 	 
 	            if (departEmploye.getEmploye().equals(this) && departEmploye.getDepartment().equals(depar)) {
 	                iterator.remove();
@@ -165,11 +165,11 @@ public class Employe extends BaseEntity implements Serializable, Comparable<Empl
 		this.idEmploye = idEmploye;
 	}
 
-	public Set<DepartamentEmploye> getDepartmens() {
+	public Set<DepartamentEmployeOld> getDepartmens() {
 		return departmens;
 	}
 
-	public void setDepartmens(Set<DepartamentEmploye> departmens) {
+	public void setDepartmens(Set<DepartamentEmployeOld> departmens) {
 		this.departmens = departmens;
 	}
 	

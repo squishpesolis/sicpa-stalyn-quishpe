@@ -19,8 +19,8 @@ import com.bp.example.common.entities.EnterpriseDepartament;
 import com.bp.example.enterprise.entities.Enterprise;
 
 @Entity
-@Table(name = "departments")
-public class Department extends EnterpriseDepartament implements Serializable, Comparable<Department> {
+@Table(name = "departments_old")
+public class DepartmentOld extends EnterpriseDepartament implements Serializable, Comparable<DepartmentOld> {
 
 	
 	/**
@@ -44,12 +44,12 @@ public class Department extends EnterpriseDepartament implements Serializable, C
 	/*@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     Set<DepartamentEmploye> departamentEmployes;*/
 	
-	public Department() {
+	public DepartmentOld() {
 		super();
 	}
 	
 	@Override
-	public int compareTo(Department o) {
+	public int compareTo(DepartmentOld o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
