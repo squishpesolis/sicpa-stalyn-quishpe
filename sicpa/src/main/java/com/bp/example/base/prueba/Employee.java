@@ -21,9 +21,9 @@ import org.hibernate.annotations.NaturalIdCache;
 import com.bp.example.base.entities.BaseEntity;
 
 
-@Entity(name = "Post")
-@Table(name = "post")
-public class Post extends BaseEntity implements Serializable, Comparable<Post>{
+@Entity(name = "Employee")
+@Table(name = "employee")
+public class Employee extends BaseEntity implements Serializable, Comparable<Employee>{
  
     /**
 	 * 
@@ -41,9 +41,9 @@ public class Post extends BaseEntity implements Serializable, Comparable<Post>{
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<PostTag> tags = new ArrayList<>();
+    private List<EmployeeDepartment> tags = new ArrayList<>();
  
-    public Post() {
+    public Employee() {
     }
  
     
@@ -72,34 +72,34 @@ public class Post extends BaseEntity implements Serializable, Comparable<Post>{
 
 
 
-	public List<PostTag> getTags() {
+	public List<EmployeeDepartment> getTags() {
 		return tags;
 	}
 
 
 
-	public void setTags(List<PostTag> tags) {
+	public void setTags(List<EmployeeDepartment> tags) {
 		this.tags = tags;
 	}
 
 
 
-	public Post(String title) {
+	public Employee(String title) {
         this.title = title;
     }
  
     //Getters and setters omitted for brevity
  
-    public void addTag(Tag tag) {
-        PostTag postTag = new PostTag(this, tag);
+    public void addTag(Department tag) {
+        EmployeeDepartment postTag = new EmployeeDepartment(this, tag);
         tags.add(postTag);
         tag.getPosts().add(postTag);
     }
  
-    public void removeTag(Tag tag) {
-        for (Iterator<PostTag> iterator = tags.iterator();
+    public void removeTag(Department tag) {
+        for (Iterator<EmployeeDepartment> iterator = tags.iterator();
              iterator.hasNext(); ) {
-            PostTag postTag = iterator.next();
+            EmployeeDepartment postTag = iterator.next();
  
             if (postTag.getPost().equals(this) &&
                     postTag.getTag().equals(tag)) {
@@ -118,7 +118,7 @@ public class Post extends BaseEntity implements Serializable, Comparable<Post>{
         if (o == null || getClass() != o.getClass())
             return false;
  
-        Post post = (Post) o;
+        Employee post = (Employee) o;
         return Objects.equals(title, post.title);
     }
  
@@ -130,7 +130,7 @@ public class Post extends BaseEntity implements Serializable, Comparable<Post>{
 
 
 	@Override
-	public int compareTo(Post o) {
+	public int compareTo(Employee o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

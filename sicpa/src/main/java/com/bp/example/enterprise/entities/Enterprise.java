@@ -17,7 +17,6 @@ import javax.persistence.Table;
 
 
 import com.bp.example.common.entities.EnterpriseDepartament;
-import com.bp.example.departments.entities.DepartmentOld;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
@@ -33,10 +32,6 @@ public class Enterprise extends EnterpriseDepartament implements Serializable, C
 	private Long idEnterprise;
 	
 
-	@JsonBackReference("jbrDepearment")
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "enterprise")
-	private Set<DepartmentOld> departments = new HashSet<>();
-	
 
 
 	public Enterprise() {
@@ -45,13 +40,6 @@ public class Enterprise extends EnterpriseDepartament implements Serializable, C
 
 	
 	
-	public Set<DepartmentOld> getDepartments() {
-		return departments;
-	}
-
-	public void setDepartments(Set<DepartmentOld> departments) {
-		this.departments = departments;
-	}
 
 	@Override
 	public int compareTo(Enterprise o) {

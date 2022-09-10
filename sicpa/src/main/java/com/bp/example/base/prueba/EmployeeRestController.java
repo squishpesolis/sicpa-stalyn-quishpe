@@ -5,12 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bp.example.base.controllers.GenericRestController;
-import com.bp.example.departments.entities.DepartmentOld;
 
 
 
 @RestController
-@RequestMapping("/tag")
-public class TagRestController extends GenericRestController<Tag>{
+@RequestMapping("/employee")
+public class EmployeeRestController extends GenericRestController<Employee>{
 
 }

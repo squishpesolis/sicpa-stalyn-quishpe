@@ -23,16 +23,15 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.NaturalIdCache;
 
 import com.bp.example.base.entities.BaseEntity;
-import com.bp.example.employees.entities.Employe;
 import com.bp.example.enterprise.entities.Enterprise;
 
-@Entity(name = "Tag")
-@Table(name = "tag")
+@Entity(name = "Department")
+@Table(name = "department")
 @NaturalIdCache
 @Cache(
     usage = CacheConcurrencyStrategy.READ_WRITE
 )
-public class Tag extends BaseEntity implements Serializable, Comparable<Tag>{
+public class Department extends BaseEntity implements Serializable, Comparable<Department>{
  
     /**
 	 * 
@@ -51,7 +50,7 @@ public class Tag extends BaseEntity implements Serializable, Comparable<Tag>{
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<PostTag> posts = new ArrayList<>();
+    private List<EmployeeDepartment> posts = new ArrayList<>();
  
     
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -59,10 +58,10 @@ public class Tag extends BaseEntity implements Serializable, Comparable<Tag>{
 	private Enterprise enterprise;
 	
 	
-    public Tag() {
+    public Department() {
     }
  
-    public Tag(String name) {
+    public Department(String name) {
         this.name = name;
     }
  
@@ -72,7 +71,7 @@ public class Tag extends BaseEntity implements Serializable, Comparable<Tag>{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tag tag = (Tag) o;
+        Department tag = (Department) o;
         return Objects.equals(name, tag.name);
     }
  
@@ -97,16 +96,16 @@ public class Tag extends BaseEntity implements Serializable, Comparable<Tag>{
 		this.name = name;
 	}
 
-	public List<PostTag> getPosts() {
+	public List<EmployeeDepartment> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(List<PostTag> posts) {
+	public void setPosts(List<EmployeeDepartment> posts) {
 		this.posts = posts;
 	}
 
 	@Override
-	public int compareTo(Tag o) {
+	public int compareTo(Department o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

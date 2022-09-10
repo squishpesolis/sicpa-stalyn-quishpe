@@ -11,30 +11,30 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
-@Entity(name = "PostTag")
-@Table(name = "post_tag")
-public class PostTag {
+@Entity(name = "EmployeeDepartment")
+@Table(name = "employee_department")
+public class EmployeeDepartment {
  
     @EmbeddedId
-    private PostTagId id;
+    private EmployeeDeparmentId id;
  
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("postId")
-    private Post post;
+    private Employee post;
  
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("tagId")
-    private Tag tag;
+    private Department tag;
  
     @Column(name = "created_on")
     private Date createdOn = new Date();
  
-    private PostTag() {}
+    private EmployeeDepartment() {}
  
-    public PostTag(Post post, Tag tag) {
+    public EmployeeDepartment(Employee post, Department tag) {
         this.post = post;
         this.tag = tag;
-        this.id = new PostTagId(post.getIdPost(), tag.getIdTag());
+        this.id = new EmployeeDeparmentId(post.getIdPost(), tag.getIdTag());
     }
  
     //Getters and setters omitted for brevity
@@ -48,32 +48,32 @@ public class PostTag {
         if (o == null || getClass() != o.getClass())
             return false;
  
-        PostTag that = (PostTag) o;
+        EmployeeDepartment that = (EmployeeDepartment) o;
         return Objects.equals(post, that.post) &&
                Objects.equals(tag, that.tag);
     }
  
-    public PostTagId getId() {
+    public EmployeeDeparmentId getId() {
 		return id;
 	}
 
-	public void setId(PostTagId id) {
+	public void setId(EmployeeDeparmentId id) {
 		this.id = id;
 	}
 
-	public Post getPost() {
+	public Employee getPost() {
 		return post;
 	}
 
-	public void setPost(Post post) {
+	public void setPost(Employee post) {
 		this.post = post;
 	}
 
-	public Tag getTag() {
+	public Department getTag() {
 		return tag;
 	}
 
-	public void setTag(Tag tag) {
+	public void setTag(Department tag) {
 		this.tag = tag;
 	}
 

@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class PostTagId
+public class EmployeeDeparmentId
     implements Serializable {
  
     @Column(name = "post_id")
@@ -16,9 +16,9 @@ public class PostTagId
     @Column(name = "tag_id")
     private Long tagId;
  
-    private PostTagId() {}
+    private EmployeeDeparmentId() {}
  
-    public PostTagId(
+    public EmployeeDeparmentId(
         Long postId,
         Long tagId) {
         this.postId = postId;
@@ -34,7 +34,7 @@ public class PostTagId
         if (o == null || getClass() != o.getClass())
             return false;
  
-        PostTagId that = (PostTagId) o;
+        EmployeeDeparmentId that = (EmployeeDeparmentId) o;
         return Objects.equals(postId, that.postId) &&
                Objects.equals(tagId, that.tagId);
     }
