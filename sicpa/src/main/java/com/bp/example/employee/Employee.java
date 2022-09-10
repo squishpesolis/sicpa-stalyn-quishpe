@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -40,8 +43,33 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
     @GeneratedValue
     private Long idEmployee;
  
-    private String title;
+
+    
+	@Column(name = "status", nullable = false)
+	private boolean status;
+	
+	@Column(name = "age", nullable = false)
+	private Long age;
+	
+
+
+	@Column(name = "email", nullable = false, length = 50, unique = true)
+	@Size(min = 1, max = 50)
+	@Email
+	private String email;
+
+	@Column(name = "name", nullable = false, length = 50, unique = true)
+	@Size(min = 1, max = 50)
+	private String name;
+	
+
+	@Column(name = "position", nullable = false, length = 20)
+	@Size(min = 1, max = 20)
+	private String position;
  
+	@Column(name = "surname", nullable = false, length = 50, unique = true)
+	@Size(min = 1, max = 50)
+	private String surname;
 
     @OneToMany(
         mappedBy = "employee",
@@ -68,16 +96,6 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
 
 
 
-	public String getTitle() {
-		return title;
-	}
-
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 
 
 	public List<EmployeeDepartment> getDepartments() {
@@ -91,10 +109,6 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
 	}
 
 
-
-	public Employee(String title) {
-        this.title = title;
-    }
  
     //Getters and setters omitted for brevity
  
@@ -118,6 +132,8 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
             }
         }
     }
+    
+
  
     @Override
     public boolean equals(Object o) {
@@ -127,12 +143,12 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
             return false;
  
         Employee post = (Employee) o;
-        return Objects.equals(title, post.title);
+        return Objects.equals(idEmployee, post.idEmployee);
     }
  
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(idEmployee);
     }
 
 
@@ -150,4 +166,78 @@ public class Employee extends BaseEntity implements Serializable, Comparable<Emp
 		// TODO Auto-generated method stub
 		return this.idEmployee;
 	}
+
+
+
+	public boolean isStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
+
+	public Long getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(Long age) {
+		this.age = age;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public String getPosition() {
+		return position;
+	}
+
+
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+
+
+	public String getSurname() {
+		return surname;
+	}
+
+
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	
+	
 }

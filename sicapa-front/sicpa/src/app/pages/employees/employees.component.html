@@ -1,1 +1,225 @@
-<p>employees works!</p>
+<div class="p-grid">
+    <div class="p-col-12">
+       <div class="card">
+          <p-toolbar styleClass="p-mb-4">
+             <ng-template pTemplate="left">
+                <button pButton pRipple label="Create" icon="pi pi-plus" class="boton-naranja p-mr-2 p-mb-2" (click)="create()"></button>
+                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2"  [disabled]="true"></button>
+             </ng-template>
+          </p-toolbar>
+          <p-table #dt
+          [value]="employees"
+          [columns]="columns"
+          [(selection)]="employeesSeleccionadas"
+          [rows]="rows"
+          [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="rowsPerPageOptions"
+          styleClass="p-datatable-customers"
+          [loading]="loading"
+          [paginator]="paginator"
+          currentPageReportTemplate="Showing  {first} of {totalRecords} records"
+          [totalRecords]="totalRecords"
+          [lazy]="lazy"
+          (onLazyLoad)="loadLazyRecords($event)"
+          >
+          <ng-template pTemplate="caption">
+             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                <h5 class="p-m-0">Employest</h5>
+             </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+             <tr>
+                <th style="width: 3rem">
+                   <p-tableHeaderCheckbox [disabled]="true"></p-tableHeaderCheckbox>
+                </th>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" class="{{col.class}}">
+                {{col.header}}
+                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort">
+                </p-sortIcon>
+                </th>
+                <th></th>
+             </tr>
+             <tr>
+                <th>
+                </th>
+                <th *ngFor="let col of filters">
+                   <p-columnFilter placeholder="Buscar por {{col.header}}" class="p-inputtext-sm"  matchMode="MATCH"
+                      [showMenu]="false" type="text" field="{{col.field}}">
+                   </p-columnFilter>
+                </th>
+                <th>
+                </th>
+             </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-employe>
+             <tr>
+                <td>
+                   <p-tableCheckbox [value]="employe" [disabled]="true"></p-tableCheckbox>
+                </td>
+                <td><span class="p-column-title">Name</span>
+                   {{employe.name}}
+                </td>
+                <td><span class="p-column-title">Surname</span>
+                   {{employe.surname}}
+                </td>
+                <td><span class="p-column-title">Email</span>
+                   {{employe.email}}
+                </td>
+                <td><span class="p-column-title">position</span>
+                    {{employe.position}}
+                 </td>
+                <td><span class="p-column-title">Status</span>
+                    {{employe.status | estados}}
+                 </td>
+     
+                <td>
+                 <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-secondary p-mr-2" (click)="show(employe)"></button> 
+
+                   <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded boton-naranja p-mr-2" (click)="edit(employe)"></button>
+                   <app-eliminar-item-tabla (sendResponseEvent)="obtenerListaPorPaginacion()"
+                   [serviceInstance]="sendService" [modelInstance]="employe" [title]="employe.name" [disabled]="false"></app-eliminar-item-tabla>
+                </td>
+             </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+             <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{employees ? employees.length : 0 }} employees.
+             </div>
+          </ng-template>
+          </p-table>
+       </div>
+
+       
+       <p-dialog [draggable]="false"
+       [(visible)]="employeeDialog"
+       header="Employee details"
+       [modal]="true"
+       [style]="{width: '50vw'}"
+       styleClass="p-fluid modal-medium"
+       >
+       <ng-template pTemplate="content">
+          <form [formGroup]="dataForm" id="edit-form" novalidate>
+
+
+
+             <div class="p-formgrid p-grid">
+                <div class="p-field p-col-12 p-md-6 ">
+                   <label for="name">Name</label>
+                   <input type="text" pInputText id="name"
+                      formControlName="name"
+                      maxlength="50"
+                      autofocus />
+                   <ng-container *ngIf="dataForm.controls['name'].dirty">
+                      <small class="p-error" *ngIf="dataForm.controls['name'].hasError">{{getErrorForm('name')}}</small>
+                   </ng-container>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6 ">
+                    <label for="surname">Surname</label>
+                    <input type="text" pInputText id="surname"
+                       formControlName="surname"
+                       maxlength="50"
+                       autofocus />
+                    <ng-container *ngIf="dataForm.controls['surname'].dirty">
+                       <small class="p-error" *ngIf="dataForm.controls['surname'].hasError">{{getErrorForm('surname')}}</small>
+                    </ng-container>
+                 </div>
+
+
+                <div class="p-field p-col-12 p-md-6 p-lg-3">
+                   <label for="email">Email</label>
+                   <input type="text" pInputText id="email" required autofocus maxlength="10"
+                      formControlName="email" />
+                   <ng-container *ngIf="dataForm.controls['email'].dirty">
+                      <small class="p-error" *ngIf="dataForm.controls['email'].hasError">{{getErrorForm('email')}}</small>
+                   </ng-container>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6">
+                   <label for="position">Position</label>
+                   <input type="text" pInputText id="position" formControlName="position" autofocus
+                      maxlength="200" />
+                   <ng-container *ngIf="dataForm.controls['position'].dirty">
+                      <small class="p-error" *ngIf="dataForm.controls['position'].hasError">{{getErrorForm('position')}}</small>
+                   </ng-container>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6">
+                  <label for="age">Age</label>
+                  <input type="text" pInputText id="age" formControlName="age" autofocus
+                     maxlength="200" />
+                  <ng-container *ngIf="dataForm.controls['age'].dirty">
+                     <small class="p-error" *ngIf="dataForm.controls['age'].hasError">{{getErrorForm('position')}}</small>
+                  </ng-container>
+               </div>
+
+            
+
+
+                  <div class="p-field p-col-12">
+                     <label class="p-mr-2"></label>
+                     <div class="p-formgroup-inline p-mt-1">
+                        <div class="p-field-checkbox">
+                           <p-checkbox formControlName="status" [binary]="true"></p-checkbox>
+                           <label class="p-mr-2 p-mt-1">Status</label>
+                        </div>
+                     </div>
+                  </div>
+
+         
+                  <div class="p-col-12" formArrayName="departments">
+
+                     <div class="p-field p-col-12">
+                           <h4>Departments</h4>
+
+                        <div class="row p-field p-col-12" *ngFor="let dep of departments.controls; let i = index"
+                           style="margin-top: 10px;"
+                           [formGroupName]="i">
+
+                           <div class="p-col-8">
+
+                              <p-dropdown *ngIf="!viewMode" [options]="departmesActives" formControlName="department" optionLabel="name"
+                                 [showClear]="true" placeholder="Selec" class="p-inputtext-sm">
+                              
+                              </p-dropdown>
+                              <ng-container *ngIf="dep.get('department').dirty">
+                                 <small class="p-error" *ngIf="dep.get('department').hasError">{{getErrorForm('departments')}}</small>
+                              </ng-container>
+
+                              <div *ngIf="viewMode && dep.get('department').value">
+                                 <strong> Name:</strong> {{dep.get('department').value.nombre}}
+                              </div>
+                           </div>
+
+
+                              <div class="p-col-3">
+
+                                 <button pButton pRipple icon="pi pi-plus" (click)="addDepartment()" class="p-button-rounded p-button-secondary p-mr-2 "></button> 
+         
+                                 <button pButton pRipple icon="pi pi-times" (click)="removeDepartment(i)" class="p-button-rounded boton-naranja p-mr-2"></button>
+                              
+                              </div>
+                        </div>
+                     
+
+                     </div>
+
+
+
+
+                  </div>
+
+          
+
+             </div>
+          </form>
+       </ng-template>
+       <ng-template pTemplate="footer">
+          <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text"
+             (click)="hideDialog()"></button>
+          <button pButton pRipple type="submit" label="Guardar" [disabled]="dataForm.invalid" *ngIf="!viewMode"
+          (click)="save()" icon="pi pi-check" class="p-button-text"></button>
+       </ng-template>
+       </p-dialog>
+    </div>
+ </div>

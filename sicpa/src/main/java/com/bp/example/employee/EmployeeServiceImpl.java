@@ -1,7 +1,9 @@
 package com.bp.example.employee;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -21,11 +23,32 @@ public class EmployeeServiceImpl extends GenericServiceImpl<Employee> implements
 	@Autowired
 	private DepartmentService departmentService;
 	
+	@Autowired
+	private EmployeeDeparmentService employeeDeparmentService;
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
 	@Override
 	public Employee guardar(Employee entidad) throws CustomException {
-		
 		Employee emplo = new Employee();
-		emplo.setTitle(entidad.getTitle());
+		
+		/*if(entidad.getId() != null) {
+			 eliminarRelationEmployeDepartment(entidad);
+		}*/
+		
+	
+		emplo.setIdEmployee(entidad.getId() != null ? entidad.getId(): null);
+		emplo.setStatus(entidad.isStatus());
+		emplo.setEmail(entidad.getEmail());
+		emplo.setName(entidad.getName());
+		emplo.setPosition(entidad.getPosition());
+		emplo.setSurname(entidad.getSurname());
+		emplo.setAge(entidad.getAge());
+		emplo.setEliminate(entidad.isEliminate());
+		
+		
+		
 		
 		List<EmployeeDepartment> listDeparments = entidad.getDepartments();
 		
@@ -37,6 +60,16 @@ public class EmployeeServiceImpl extends GenericServiceImpl<Employee> implements
 		}
 		
 		return super.guardar(emplo);
+	}
+	
+	
+	private void eliminarRelationEmployeDepartment(Employee entidad)throws CustomException { 
+		
+		List<EmployeeDepartment> list = employeeDeparmentService.getByIdEmploye(entidad.getId());
+		
+		List<EmployeeDeparmentId> ids = list.stream().map(a -> a.getId()).collect(Collectors.toList());
+		
+		employeeDeparmentService.deleteByListId(ids);
 	}
 	
 

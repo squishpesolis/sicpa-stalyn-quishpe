@@ -18,7 +18,7 @@ public class EnterpriseRestController extends GenericRestController<Enterprise>{
 	private EnterpriseService enterpriseService;
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/get-active-companies")
-	public List<Enterprise> obtenerEmpresaActivas() {
-		return enterpriseService.obtenerEmpresaActivas();
+	public List<Enterprise> getActiveCompanies() {
+		return enterpriseService.getActiveCompanies();
 	}
 }

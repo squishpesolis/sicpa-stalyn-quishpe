@@ -6,6 +6,6 @@ import com.bp.example.base.GenericService;
 
 public interface EnterpriseService extends GenericService<Enterprise> {
 
-	List<Enterprise> obtenerEmpresaActivas();
+	List<Enterprise> getActiveCompanies();
 
 }

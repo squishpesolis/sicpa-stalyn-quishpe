@@ -16,7 +16,7 @@ public class EmployeeDeparmentId
 	private static final long serialVersionUID = 1768211251620874780L;
 
 	@Column(name = "id_employee")
-    private Long idEmployee;
+    private Long idEmployee;  
  
     @Column(name = "id_department")
     private Long idDepartment;

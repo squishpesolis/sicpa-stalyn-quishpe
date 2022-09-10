@@ -19,7 +19,7 @@ public class EnterpriseServiceImpl extends GenericServiceImpl<Enterprise> implem
 	private EnterpriseRepository enterpriseRepository; 
 	
 	@Override
-	public List<Enterprise> obtenerEmpresaActivas(){
-		return enterpriseRepository.findAll(EnterpriseSpecification.obtenerEmpresaActivas());
+	public List<Enterprise> getActiveCompanies(){
+		return enterpriseRepository.findAll(EnterpriseSpecification.getActiveCompanies());
 	}
 }

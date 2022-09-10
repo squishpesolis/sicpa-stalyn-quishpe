@@ -85,7 +85,7 @@
           </ng-template>
           <ng-template pTemplate="summary">
              <div class="p-d-flex p-ai-center p-jc-between">
-                In total there are {{deparments ? deparments.length : 0 }} companies.
+                In total there are {{deparments ? deparments.length : 0 }} departmens.
              </div>
           </ng-template>
           </p-table>
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="p-field p-col-12 p-md-6">
-                   <label for="name">Adress</label>
+                   <label for="adress">Adress</label>
                    <input type="text" pInputText id="adress" formControlName="adress" autofocus
                       maxlength="200" />
                    <ng-container *ngIf="dataForm.controls['adress'].dirty">
@@ -145,7 +145,7 @@
 
                 
                 <div class="p-field p-col-12 p-md-6">
-                    <label for="name">Description</label>
+                    <label for="description">Description</label>
                     <input type="text" pInputText id="description" formControlName="description" autofocus
                        maxlength="200" />
                     <ng-container *ngIf="dataForm.controls['description'].dirty">
