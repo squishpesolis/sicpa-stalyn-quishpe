@@ -1,0 +1,29 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3'
+
+services:
+  
+    #Back-end Spring Boot 
+  sq-back-end:
+    build: 
+      context: ./sicpa 
+      dockerfile: Dockerfile                
+    container_name: sq-back-end
+    ports:
+      - 8088:8080
+    depends_on:
+      - sq-db
+    restart: always
+
+  sq-db:
+    image: postgres
+    ports:
+     # - "5432:5432"
+      - "5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb
+
+
+

@@ -10,5 +10,5 @@ RUN mvn clean -e -B package
 FROM openjdk:11-jre-slim-buster
 EXPOSE 8080
 WORKDIR /app
-COPY --from=builder /app/target/banco-0.0.1-SNAPSHOT.jar .
+COPY --from=builder /app/target/sicpa-0.0.1-SNAPSHOT.jar .
 ENTRYPOINT ["java", "-jar", "./sicpa-0.0.1-SNAPSHOT.jar"]

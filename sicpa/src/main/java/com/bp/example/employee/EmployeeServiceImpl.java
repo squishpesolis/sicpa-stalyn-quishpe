@@ -33,9 +33,9 @@ public class EmployeeServiceImpl extends GenericServiceImpl<Employee> implements
 	public Employee guardar(Employee entidad) throws CustomException {
 		Employee emplo = new Employee();
 		
-		/*if(entidad.getId() != null) {
+		if(entidad.getId() != null) {
 			 eliminarRelationEmployeDepartment(entidad);
-		}*/
+		}
 		
 	
 		emplo.setIdEmployee(entidad.getId() != null ? entidad.getId(): null);
