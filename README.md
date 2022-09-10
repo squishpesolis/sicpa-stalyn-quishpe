@@ -5,12 +5,12 @@
 
 
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/squishpesolis/ejemplo_practico_stalyn_quishpe.git)
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/squishpesolis/sicpa-stalyn-quishpe.git)
 
 Este proyecto fue desarrollado en Spring Boot, hibernate y docker,
 
 ## Url del proyecto
-- https://github.com/squishpesolis/ejemplo_practico_stalyn_quishpe
+- https://github.com/squishpesolis/sicpa-stalyn-quishpe.git
 
 ## Compilacion y Despliegue con Docker
 
