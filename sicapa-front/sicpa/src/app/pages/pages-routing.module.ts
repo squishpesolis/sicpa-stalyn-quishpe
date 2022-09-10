@@ -8,10 +8,16 @@ import { PagesComponent } from './pages.component';
 
 const routes: Routes = [
   {
-    path: 'menu',
+    path: 'dashboard',
     component: PagesComponent,
-    loadChildren: () => import('./routing/menu-routing/menu-routing.module')
-                        .then(m => m.MenuRoutingModule)
+    loadChildren: () => import('./routing/dashboard-routing/dashboard-routing.module')
+    .then(m => m.DashboardRoutingModule)
+  },
+  {
+    path: 'system',
+    component: PagesComponent,
+    loadChildren:() => import('./routing/system-routing/system-routing.module').then(m => m.SystemRoutingModule)
+    //canActivate: [RouteAccessGuard],
   },   
 ];
 

@@ -9,7 +9,8 @@ import {CardModule} from 'primeng/card';
 import {DividerModule} from 'primeng/divider';
 import {ImageModule} from 'primeng/image';
 import {ListboxModule} from 'primeng/listbox';
-
+import { MenubarModule } from 'primeng/menubar';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -20,13 +21,21 @@ import {ListboxModule} from 'primeng/listbox';
 import { MenuComponent } from './menu/menu.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
+import { EnterpriseComponent } from './enterprise/enterprise.component';
+import { HomeComponent } from './home/home.component';
+import { DepartmentsComponent } from './departments/departments.component';
+import { EmployeesComponent } from './employees/employees.component';
 
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    PagesComponent
+    PagesComponent,
+    EnterpriseComponent,
+    HomeComponent,
+    DepartmentsComponent,
+    EmployeesComponent
 
   ],
   imports: [
@@ -39,6 +48,8 @@ import { PagesComponent } from './pages.component';
     DividerModule,
     ImageModule,
     ListboxModule,
+    MenubarModule,
+    InputTextModule,
     // Routing
     PagesRoutingModule,
     BrowserModule,

@@ -1,7 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
-
-import { DOCUMENT } from '@angular/common';
+import {MenuItem} from 'primeng/api';
 
 
 
@@ -13,18 +11,28 @@ import { DOCUMENT } from '@angular/common';
 })
 
 export class MenuComponent implements OnInit {
+  
+  items!: MenuItem[];
 
 
-
-  constructor() {
-
-   }
-
-  ngOnInit(): void {
-
-  }
-
-
-
+   ngOnInit() {
+    this.items = [
+        {
+            label:'Companies',
+            icon:'pi pi-fw pi-file',
+            routerLink: ['/system/enterprise']
+        },
+        {
+            label:'Departments',
+            icon:'pi pi-fw pi-pencil',
+            routerLink: ['/system/departments']
+        },
+        {
+            label:'Employees',
+            icon:'pi pi-fw pi-user',
+            routerLink: ['/system/employes']
+        }
+    ];
+}    
 
 }

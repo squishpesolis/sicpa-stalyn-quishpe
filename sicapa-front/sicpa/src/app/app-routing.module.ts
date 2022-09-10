@@ -5,7 +5,7 @@ import { PagesModule } from './pages/pages.module';
 
 const routes: Routes = [
 
-  { path: '**', pathMatch: 'full', redirectTo: '/menu' }
+  { path: '**', pathMatch: 'full', redirectTo: '/dashboard' }
 
 ];
 
