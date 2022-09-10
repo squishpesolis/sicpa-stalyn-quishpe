@@ -16,14 +16,26 @@ services:
     restart: always
 
   sq-db:
+    container_name: sq-db
     image: postgres
     ports:
-     # - "5432:5432"
       - "5432"
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
       - POSTGRES_DB=mydb
+
+  sq-front-end:
+    container_name: sq-front-end
+    build:
+      context: ./sicapa-front/sicpa
+      dockerfile: Dockerfile
+    container_name: sq-front-end
+    ports:
+      - ${PUERTO_FRONT_END_EXTERNO}:80
+    depends_on:
+      - sq-back-end
+
 
 
 
