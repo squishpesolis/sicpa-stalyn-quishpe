@@ -1,8 +1,8 @@
 export class Base {
    constructor(
-     public fechaCreacion?: string,
-     public fechaModificacion?: string,
-     public usuarioCreacion?: string,
-     public usuarioModificacion?: string
+     public createDate?: string,
+     public modifiedDate?: string,
+     public createdBy?: string,
+     public modifiedBy?: string
    ){}
  }

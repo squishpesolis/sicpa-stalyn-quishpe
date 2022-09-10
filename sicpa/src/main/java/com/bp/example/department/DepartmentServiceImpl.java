@@ -1,11 +1,11 @@
-package com.bp.example.base.prueba;
+package com.bp.example.department;
 
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.bp.example.base.service.impl.GenericServiceImpl;
+import com.bp.example.base.GenericServiceImpl;
 
 
 @Service("departmentServiceImpl")

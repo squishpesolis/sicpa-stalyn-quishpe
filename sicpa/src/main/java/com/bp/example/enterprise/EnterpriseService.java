@@ -1,8 +1,11 @@
-package com.bp.example.enterprise.service;
+package com.bp.example.enterprise;
 
-import com.bp.example.base.service.GenericService;
-import com.bp.example.enterprise.entities.Enterprise;
+import java.util.List;
 
-public interface EntrepriseService extends GenericService<Enterprise> {
+import com.bp.example.base.GenericService;
+
+public interface EnterpriseService extends GenericService<Enterprise> {
+
+	List<Enterprise> obtenerEmpresaActivas();
 
 }

@@ -1,4 +1,4 @@
-package com.bp.example.base.prueba;
+package com.bp.example.department;
 
 import java.io.Serializable;
 //https://vladmihalcea.com/the-best-way-to-map-a-many-to-many-association-with-extra-columns-when-using-jpa-and-hibernate/
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,21 +16,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.NaturalIdCache;
 
-import com.bp.example.base.entities.BaseEntity;
-import com.bp.example.enterprise.entities.Enterprise;
+import com.bp.example.common.entities.EnterpriseDepartament;
+import com.bp.example.employee.EmployeeDepartment;
+import com.bp.example.enterprise.Enterprise;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "Department")
 @Table(name = "department")
 @NaturalIdCache
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Department extends BaseEntity implements Serializable, Comparable<Department> {
+public class Department extends EnterpriseDepartament implements Serializable, Comparable<Department> {
 
 	/**
 	 * 
@@ -40,8 +42,12 @@ public class Department extends BaseEntity implements Serializable, Comparable<D
 	@GeneratedValue
 	private Long idDepartment;
 
-	@NaturalId
-	private String name;
+	@Column(name = "description", nullable = false, length = 255)
+	@Size(min = 1, max = 255)
+	private String description;
+	
+	
+	
 
 	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
@@ -54,9 +60,7 @@ public class Department extends BaseEntity implements Serializable, Comparable<D
 	public Department() {
 	}
 
-	public Department(String name) {
-		this.name = name;
-	}
+
 
 	// Getters and setters omitted for brevity
 
@@ -67,12 +71,12 @@ public class Department extends BaseEntity implements Serializable, Comparable<D
 		if (o == null || getClass() != o.getClass())
 			return false;
 		Department department = (Department) o;
-		return Objects.equals(name, department.name);
+		return Objects.equals(idDepartment, department.idDepartment);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name);
+		return Objects.hash(idDepartment);
 	}
 
 	public Long getIdDepartment() {
@@ -83,13 +87,7 @@ public class Department extends BaseEntity implements Serializable, Comparable<D
 		this.idDepartment = id;
 	}
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public List<EmployeeDepartment> getEmployees() {
 		return employees;
@@ -104,6 +102,20 @@ public class Department extends BaseEntity implements Serializable, Comparable<D
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
+	
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
 
 	@Override
 	public Long getId() {

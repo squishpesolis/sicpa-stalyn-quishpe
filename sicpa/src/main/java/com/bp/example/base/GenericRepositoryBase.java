@@ -1,4 +1,4 @@
-package com.bp.example.base.repository;
+package com.bp.example.base;
 
 import java.util.List;
 

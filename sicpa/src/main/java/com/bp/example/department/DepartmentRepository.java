@@ -1,8 +1,8 @@
-package com.bp.example.base.prueba;
+package com.bp.example.department;
 
 import org.springframework.stereotype.Repository;
 
-import com.bp.example.base.repository.GenericRepositoryBase;
+import com.bp.example.base.GenericRepositoryBase;
 
 @Repository
 public interface DepartmentRepository extends GenericRepositoryBase<Department> {

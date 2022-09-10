@@ -1,4 +1,4 @@
-package com.bp.example.base.prueba;
+package com.bp.example.employee;
 
 
 import java.util.List;
@@ -8,8 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bp.example.base.exceptions.CustomException;
-import com.bp.example.base.service.impl.GenericServiceImpl;
+import com.bp.example.base.CustomException;
+import com.bp.example.base.GenericServiceImpl;
+import com.bp.example.department.Department;
+import com.bp.example.department.DepartmentService;
 
 @Service("employeeServiceImpl")
 @Transactional

@@ -1,6 +1,6 @@
-package com.bp.example.base.prueba;
+package com.bp.example.employee;
 
-import com.bp.example.base.service.GenericService;
+import com.bp.example.base.GenericService;
 
 public interface EmployeeService extends GenericService<Employee> {
 

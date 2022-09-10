@@ -1,4 +1,4 @@
-package com.bp.example.base.exceptions;
+package com.bp.example.base;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;

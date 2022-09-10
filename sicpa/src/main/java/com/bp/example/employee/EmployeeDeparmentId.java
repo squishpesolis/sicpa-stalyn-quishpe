@@ -1,4 +1,4 @@
-package com.bp.example.base.prueba;
+package com.bp.example.employee;
 
 import java.io.Serializable;
 import java.util.Objects;

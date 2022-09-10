@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
-import com.bp.example.base.entities.BaseEntity;
+import com.bp.example.base.BaseEntity;
 
 public class Audit {
 

@@ -1,4 +1,4 @@
-package com.bp.example.enterprise.entities;
+package com.bp.example.enterprise;
 
 import java.io.Serializable;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package com.bp.example.base.service;
+package com.bp.example.base;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,10 +6,6 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
-import com.bp.example.base.exceptions.CustomException;
-import com.bp.example.base.utils.SearchByCriteria;
-import com.bp.example.base.utils.GeneriSpecification;
-import com.bp.example.base.utils.LazyParametros;
 import com.bp.example.enums.OperacionesBusquedaJpaEnum;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,1 +1,179 @@
-<p>departments works!</p>
+<div class="p-grid">
+    <div class="p-col-12">
+       <div class="card">
+          <p-toolbar styleClass="p-mb-4">
+             <ng-template pTemplate="left">
+                <button pButton pRipple label="Create" icon="pi pi-plus" class="boton-naranja p-mr-2 p-mb-2" (click)="create()"></button>
+                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2"  [disabled]="true"></button>
+             </ng-template>
+          </p-toolbar>
+          <p-table #dt
+          [value]="deparments"
+          [columns]="columns"
+          [(selection)]="deparmentsSeleccionadas"
+          [rows]="rows"
+          [showCurrentPageReport]="true"
+          [rowsPerPageOptions]="rowsPerPageOptions"
+          styleClass="p-datatable-customers"
+          [loading]="loading"
+          [paginator]="paginator"
+          currentPageReportTemplate="Showing  {first} of {totalRecords} records"
+          [totalRecords]="totalRecords"
+          [lazy]="lazy"
+          (onLazyLoad)="loadLazyRecords($event)"
+          >
+          <ng-template pTemplate="caption">
+             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                <h5 class="p-m-0">Departments</h5>
+             </div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+             <tr>
+                <th style="width: 3rem">
+                   <p-tableHeaderCheckbox [disabled]="true"></p-tableHeaderCheckbox>
+                </th>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" class="{{col.class}}">
+                {{col.header}}
+                <p-sortIcon [field]="col.field" ariaLabel="Activate to sort">
+                </p-sortIcon>
+                </th>
+                <th></th>
+             </tr>
+             <tr>
+                <th>
+                </th>
+                <th *ngFor="let col of filters">
+                   <p-columnFilter placeholder="Buscar por {{col.header}}" class="p-inputtext-sm"  matchMode="MATCH"
+                      [showMenu]="false" type="text" field="{{col.field}}">
+                   </p-columnFilter>
+                </th>
+                <th>
+                </th>
+             </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-deparment>
+             <tr>
+                <td>
+                   <p-tableCheckbox [value]="deparment" [disabled]="true"></p-tableCheckbox>
+                </td>
+                <td><span class="p-column-title">Name</span>
+                   {{deparment.name}}
+                </td>
+                <td><span class="p-column-title">Phone</span>
+                   {{deparment.phone}}
+                </td>
+                <td><span class="p-column-title">Adress</span>
+                   {{deparment.adress}}
+                </td>
+                <td><span class="p-column-title">Description</span>
+                    {{deparment.description}}
+                 </td>
+                <td><span class="p-column-title">Status</span>
+                    {{deparment.status | estados}}
+                 </td>
+                 <td><span class="p-column-title">Company</span>
+                    {{deparment.enterprise.name}}
+                 </td>
+                <td>
+                 <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-secondary p-mr-2" (click)="show(deparment)"></button> 
+
+                   <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded boton-naranja p-mr-2" (click)="edit(deparment)"></button>
+                   <app-eliminar-item-tabla (sendResponseEvent)="obtenerListaPorPaginacion()"
+                   [serviceInstance]="sendService" [modelInstance]="deparment" [title]="deparment.name" [disabled]="false"></app-eliminar-item-tabla>
+                </td>
+             </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+             <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{deparments ? deparments.length : 0 }} companies.
+             </div>
+          </ng-template>
+          </p-table>
+       </div>
+
+       
+       <p-dialog [draggable]="false"
+       [(visible)]="deparmentDialog"
+       header="Department details"
+       [modal]="true"
+       [style]="{width: '50vw'}"
+       styleClass="p-fluid modal-medium"
+       >
+       <ng-template pTemplate="content">
+          <form [formGroup]="dataForm" id="edit-form" novalidate>
+
+            <div class="p-field p-col-12 p-md-6 p-lg-3">
+                <label for="enterprise">Enterprise</label>
+                <p-dropdown *ngIf="!viewMode" [options]="empresasActivas" formControlName="enterprise" optionLabel="name"
+                    [showClear]="true" placeholder="Selec" class="p-inputtext-sm"></p-dropdown>
+                <ng-container *ngIf="dataForm.controls['enterprise'].dirty">
+                    <small class="p-error" *ngIf="dataForm.controls['enterprise'].hasError">{{getErrorForm('enterprise')}}</small>
+                </ng-container>
+                <div *ngIf="viewMode && dataForm.get('enterprise').value">
+                    <strong> Name:</strong> {{dataForm.get('enterprise').value.nombre}}
+                </div>
+            </div>
+
+             <div class="p-formgrid p-grid">
+                <div class="p-field p-col-12 p-md-6 ">
+                   <label for="name">Name</label>
+                   <input type="text" pInputText id="name"
+                      formControlName="name"
+                      maxlength="50"
+                      autofocus />
+                   <ng-container *ngIf="dataForm.controls['name'].dirty">
+                      <small class="p-error" *ngIf="dataForm.controls['name'].hasError">{{getErrorForm('name')}}</small>
+                   </ng-container>
+                </div>
+                <div class="p-field p-col-12 p-md-6 p-lg-3">
+                   <label for="phone">Phone</label>
+                   <input type="text" pInputText id="phone" required autofocus maxlength="10"
+                      formControlName="phone" />
+                   <ng-container *ngIf="dataForm.controls['phone'].dirty">
+                      <small class="p-error" *ngIf="dataForm.controls['phone'].hasError">{{getErrorForm('phone')}}</small>
+                   </ng-container>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6">
+                   <label for="name">Adress</label>
+                   <input type="text" pInputText id="adress" formControlName="adress" autofocus
+                      maxlength="200" />
+                   <ng-container *ngIf="dataForm.controls['adress'].dirty">
+                      <small class="p-error" *ngIf="dataForm.controls['adress'].hasError">{{getErrorForm('adress')}}</small>
+                   </ng-container>
+                </div>
+
+                
+                <div class="p-field p-col-12 p-md-6">
+                    <label for="name">Description</label>
+                    <input type="text" pInputText id="description" formControlName="description" autofocus
+                       maxlength="200" />
+                    <ng-container *ngIf="dataForm.controls['description'].dirty">
+                       <small class="p-error" *ngIf="dataForm.controls['description'].hasError">{{getErrorForm('description')}}</small>
+                    </ng-container>
+                 </div>
+
+                <br>
+                  <div class="p-field p-col-12">
+                     <label class="p-mr-2"></label>
+                     <div class="p-formgroup-inline p-mt-1">
+                        <div class="p-field-checkbox">
+                           <p-checkbox formControlName="status" [binary]="true"></p-checkbox>
+                           <label class="p-mr-2 p-mt-1">Status</label>
+                        </div>
+                     </div>
+                  </div>
+          
+
+             </div>
+          </form>
+       </ng-template>
+       <ng-template pTemplate="footer">
+          <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text"
+             (click)="hideDialog()"></button>
+          <button pButton pRipple type="submit" label="Guardar" [disabled]="dataForm.invalid" *ngIf="!viewMode"
+          (click)="save()" icon="pi pi-check" class="p-button-text"></button>
+       </ng-template>
+       </p-dialog>
+    </div>
+ </div>

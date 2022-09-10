@@ -1,4 +1,4 @@
-package com.bp.example.base.prueba;
+package com.bp.example.employee;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +18,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.NaturalIdCache;
 
-import com.bp.example.base.entities.BaseEntity;
+import com.bp.example.base.BaseEntity;
+import com.bp.example.department.Department;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

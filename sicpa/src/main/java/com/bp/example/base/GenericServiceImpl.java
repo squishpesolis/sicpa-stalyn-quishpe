@@ -1,4 +1,4 @@
-package com.bp.example.base.service.impl;
+package com.bp.example.base;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -19,14 +19,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import com.bp.example.base.entities.BaseEntity;
-import com.bp.example.base.exceptions.CustomException;
-import com.bp.example.base.repository.GenericRepositoryBase;
-import com.bp.example.base.service.GenericService;
-import com.bp.example.base.utils.SearchByCriteria;
-import com.bp.example.base.utils.GeneriSpecification;
-import com.bp.example.base.utils.LazyParametros;
 import com.bp.example.enums.OperacionesBusquedaJpaEnum;
 import com.bp.example.utils.FechaUtil;
 

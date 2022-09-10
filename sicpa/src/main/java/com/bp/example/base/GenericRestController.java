@@ -1,4 +1,4 @@
-package com.bp.example.base.controllers;
+package com.bp.example.base;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-
-import com.bp.example.base.entities.BaseEntity;
-import com.bp.example.base.exceptions.CustomException;
-import com.bp.example.base.service.impl.GenericServiceImpl;
 
 public abstract class GenericRestController<T extends BaseEntity> {
 

@@ -1,4 +1,4 @@
-package com.bp.example.base.entities;
+package com.bp.example.base;
 
 
 

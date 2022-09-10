@@ -168,7 +168,7 @@ export class IrisService<T extends MayHaveId> {
     size: number,
     listaBuscarCriterio: BuscarPorCriterio[] | null,
     order: number = 0,
-    campoOrdenar: string = 'fechaCreacion'): LazyParametros {
+    campoOrdenar: string = 'createDate'): LazyParametros {
 
     // Filtar por sucursal
     if (listaBuscarCriterio === null) {
@@ -200,21 +200,21 @@ export class IrisService<T extends MayHaveId> {
 
   formarAuditoria(entidad: any): Base {
 
-    let fechaCreacion = entidad.fechaCreacion;
-    let usuarioCreacion = entidad.usuarioCreacion;
+    let createDate = entidad.createDate;
+    let createdBy = entidad.createdBy;
 
-    const usuarioModificacion = 'sicpa-front';
+    const modifiedBy = 'sicpa-front';
 
-    if (!fechaCreacion) {
-      fechaCreacion = new Date().toLocaleString(IDIOMA_PRINCIPAL_SISTEMA, { timeZone: ZONA_HORARIO_TIEMPO });
-      fechaCreacion = this.formarFecha(fechaCreacion);
+    if (!createDate) {
+      createDate = new Date().toLocaleString(IDIOMA_PRINCIPAL_SISTEMA, { timeZone: ZONA_HORARIO_TIEMPO });
+      createDate = this.formarFecha(createDate);
     }
 
 
-    if (!usuarioCreacion) {
-      usuarioCreacion = 'sicpa-front';
+    if (!createdBy) {
+      createdBy = 'sicpa-front';
     }
-    const auditoria: Base = new Base(fechaCreacion, this.obtenerFechaActual(), usuarioCreacion, usuarioModificacion);
+    const auditoria: Base = new Base(createDate, this.obtenerFechaActual(), createdBy, modifiedBy);
     return auditoria;
   }
 
@@ -247,10 +247,10 @@ export class IrisService<T extends MayHaveId> {
 
   addAuditoria(modelo: any) {
     let auditoria = this.formarAuditoria(modelo);
-    modelo.fechaCreacion = auditoria.fechaCreacion;
-    modelo.fechaModificacion = auditoria.fechaModificacion;
-    modelo.usuarioCreacion = auditoria.usuarioCreacion;
-    modelo.usuarioModificacion = auditoria.usuarioModificacion;
+    modelo.createDate = auditoria.createDate;
+    modelo.modifiedDate = auditoria.modifiedDate;
+    modelo.createdBy = auditoria.createdBy;
+    modelo.modifiedBy = auditoria.modifiedBy;
     return modelo;
   }
 

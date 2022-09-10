@@ -1,4 +1,4 @@
-package com.bp.example.base.prueba;
+package com.bp.example.employee;
 
 import java.util.Date;
 import java.util.Objects;
@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import com.bp.example.department.Department;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
